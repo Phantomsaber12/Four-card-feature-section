@@ -1,0 +1,239 @@
+/* ─── DESKTOP DESIGN TOKENS (1440px container) ─────────────────────────────────────────────────────────────────── */
+:root {
+  /* ── Layout & Grid ──*/
+  --max-width:            69.5%;                   /* 1110px,📏 Content container max width */
+  --gap-heading-to-grid:  64px;                     /* ⬇ Space between heading/paragraph and grid of cards */
+  --gap-grid-horizontal:  30px;                     /* ↔ Space between side-by-side cards */
+  --gap-grid-vertical:    30px;                     /* ↕ Space between stacked cards */
+
+  /* ── Intro Text Elements Vertical Spacing Between ── */
+  --gap-heading-subheading: 16px;   /* h1 → h2 */
+  --gap-subheading-paragraph: 20px; /* h2 → p */
+
+  /* ── Colors ─── */
+  --clr-primary-red:      hsl(0, 78%, 62%);         /* 🔴 Top border for Supervisor card */
+  --clr-primary-cyan:     hsl(180, 62%, 55%);       /* 🟦 Top border for Team Builder card */
+  --clr-primary-orange:   hsl(34, 97%, 64%);        /* 🟧 Top border for Karma card */
+  --clr-primary-blue:     hsl(212, 86%, 64%);       /* 🔵 Top border for Calculator card */
+
+  --clr-neutral-dark:     hsl(234, 12%, 34%);       /* 🖤 Main heading h1 & h2 and p & card titles */
+  --clr-neutral-gray:     hsl(212, 6%, 50%);        /* 🩶 Descriptive paragraph in cards */
+  --clr-neutral-light:    hsl(0, 0%, 98%);          /* ⚪ Card background and icon circles */
+  --clr-white:            hsl(0, 0%, 100%);         /* 🤍 Background (body), not prominently used */
+
+  /* ── Typography ── */
+  --ff-base:              'Poppins', sans-serif;    /* 🧠 Entire page text */
+  --fw-light:             200;                      /* 🪶 (Unused — optional for thin headings) */
+  --fw-regular:           400;                      /* 📄 Body text in cards */
+  --fw-semibold:          600;                      /* 🧱 Card titles and main heading */
+
+  --fs-heading:           36px;                     /* 🔠 Page heading: "Reliable, efficient delivery" */
+  
+  --fs-paragraph:         16px;                     /* 📄 Paragraph text under card titles */
+  --fs-card-heading:      20px;
+
+  /* ── Card Styling ─── */
+  --card-padding:         32px;                     /* 🧱 Padding inside card left , top , bottom*/
+  --card-radius:          5px;                     /* 🌀 Rounded corners for cards */
+
+ /* ── Card Vertical Spacing ───────────────────────────── */
+  --gap-card-heading-to-text:    8px;  /* Heading → Paragraph */
+  --gap-card-text-to-icon:       40px;  /* Paragraph → Icon */
+}
+
+
+
+/* ─── Resets ──────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0; 
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;              /* for smooth anchor scrolling */
+  -webkit-text-size-adjust: 100%;       /* prevent iOS font size zooming */
+  -moz-text-size-adjust: none;/* Prevent font size inflation */
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+body {
+  font-synthesis: none;                 /* prevent fake bold/italics */
+  text-rendering: optimizeLegibility;   /* better kerning/anti-aliasing */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body, h1, h2, h3, h4, p{
+  margin-block-end: 0; /* Remove default margin in favour of better control in authored CSS */
+  line-height: 1; /*there is vertical default spacing between <h> & <p> elements , and that is beacaue default is line-height: 1.5;
+                       works as vertical margin between them , and as height between lines of the same element*/ 
+}
+h1, h2, h3, h4 {
+  text-wrap: balance;/* Balance text wrapping on headings */ 
+}
+img, picture, video, canvas, svg {
+  display: block;                       /* removes extra inline space */
+  max-width: 100%;                      /* responsive media */
+  height: auto;
+}
+
+
+
+
+/* ─── Code ──────────────────────────────────────────────────────── */
+html , body{
+background-color: var(--clr-white);
+min-height: 100vh;
+min-height: 100dvh; /*browser use it , or it fallback to 100vh*/
+font-family: var(--ff-base);
+}
+
+
+.text-and-grid-wrapper {
+  width: 100%;
+  min-height: 100dvh; /*fills whole height of the viewport <html> & <body>*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-heading-to-grid);
+}
+
+
+.text-wrapper{
+  width: var(--max-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+.text-wrapper h1{
+ font-size: var(--fs-heading);
+ font-weight: var(--fw-light);
+ color: var(--clr-neutral-dark);
+}
+.text-wrapper h2{
+  font-size: var(--fs-heading);
+  font-weight: var(--fw-semibold);
+  color: var(--clr-neutral-dark);
+  margin-top: var(--gap-heading-subheading);
+}
+.text-wrapper p{
+  font-size: var(--fs-paragraph);
+  font-weight: var(--fw-regular);
+  color: var(--clr-neutral-dark);
+  margin-top: var(--gap-subheading-paragraph);
+  line-height: 1.5;
+  text-align: center;
+}
+
+
+
+
+
+.four-card-grid{
+  width: var(--max-width);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(8, auto);
+  grid-column-gap: var(--gap-grid-horizontal);
+  grid-row-gap: var(--gap-grid-vertical);
+}
+
+
+.first-item-card { 
+  grid-area: 3 / 1 / 7 / 2;
+  border-top: 4px solid var(--clr-primary-cyan);
+ }
+.second-item-card { 
+  grid-area: 1 / 2 / 5 / 3; 
+  border-top: 4px solid var(--clr-primary-red);
+}
+.third-item-card { 
+  grid-area: 5 / 2 / 9 / 3; 
+  border-top: 4px solid var(--clr-primary-orange);
+}
+.fourth-item-card {
+   grid-area: 3 / 3 / 7 / 4; 
+   border-top: 4px solid var(--clr-primary-blue);
+  }
+  .first-item-card  , .second-item-card , .third-item-card , .fourth-item-card{
+    padding: var(--card-padding) 0 calc(1rem + var(--card-padding)) var(--card-padding);
+    background-color: var(--clr-neutral-light);
+    border-radius: var(--card-radius);
+    box-shadow: 0px 15px 19px -2px hsl(212, 66%, 93%);
+  }
+ .first-item-card:hover  , .second-item-card:hover , .third-item-card:hover , .fourth-item-card:hover{
+  transition: transform 0.3s ease , box-shadow 0.3s ease; 
+  transform: translateY(-10px);
+  box-shadow:  0 20px 20px rgba(0, 0, 0, 0.05);
+ }
+
+  .first-item-card h3  , .second-item-card h3 , .third-item-card h3 , .fourth-item-card h3{
+   font-size: var(--fs-card-heading);
+   font-weight: var(--fw-semibold);
+   color: var(--clr-neutral-dark);
+  }
+  .first-item-card p  , .second-item-card p , .third-item-card p , .fourth-item-card p{
+   font-size: var(--fs-paragraph);
+   font-weight: var(--fw-regular);
+   color: var(--clr-neutral-gray);
+   margin-top: var(--gap-card-heading-to-text);
+   line-height: 1.5;
+  }
+  .first-item-card .supervisor-icon, .second-item-card .team-builder-icon, .third-item-card .karma-icon, .fourth-item-card .calculator-icon{
+   margin: var(--gap-card-text-to-icon)  32px 0 auto;
+  }
+
+
+
+
+
+/* ─── MOBILE DESIGN TOKENS (650px) ──────────────────────────────────────────────────────────────────────── */
+@media (max-width: 40.625em) {
+  :root {
+  /* ── Layout & Grid ── */
+  --max-width:           90%;      /* Desktop: 69.5% */
+  --gap-heading-to-grid: 48px;     /* Desktop: 64px */
+  --gap-grid-horizontal: 0px;      /* Desktop: 30px */
+  --gap-grid-vertical:   24px;     /* Desktop: 30px */
+
+  /* ── Intro Spacing ── */
+  --gap-heading-subheading:     12px;  /* Desktop: 16px */
+  --gap-subheading-paragraph:   18px;  /* Desktop: 20px */
+
+  /* ── Typography ── */
+  --fs-heading:           26px;   /* Desktop: 36px */
+  --fs-paragraph:         16px;   /* Desktop: 16px */
+  --fs-card-heading:      18px;   /* Desktop: 20px */
+
+  /* ── Card ── */
+  --card-padding:         24px;   /* Desktop: 32px */
+  --gap-card-text-to-icon: 32px;  /* Desktop: 40px */
+}
+
+
+  br { /*prevent <bt> effect*/
+  display: none;
+}
+
+
+  .four-card-grid{
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+  }
+  .first-item-card  , .second-item-card , .third-item-card , .fourth-item-card{
+    grid-area: auto
+  }
+   .first-item-card  , .second-item-card , .third-item-card , .fourth-item-card{
+    padding: var(--card-padding) var(--card-padding) calc(1rem + var(--card-padding)) var(--card-padding);
+   }
+  .first-item-card .supervisor-icon, .second-item-card .team-builder-icon, .third-item-card .karma-icon, .fourth-item-card .calculator-icon{
+   margin: var(--gap-card-text-to-icon) 0 0 auto;
+  }
+
+  .first-item-card:active  , .second-item-card:active , .third-item-card:active , .fourth-item-card:active{
+  transition: transform 0.3s ease , box-shadow 0.3s ease; 
+  transform: translateY(-10px);
+  box-shadow:  0 20px 20px rgba(0, 0, 0, 0.05);
+ }
+}
