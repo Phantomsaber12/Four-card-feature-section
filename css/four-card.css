@@ -1,7 +1,7 @@
 /* ─── DESKTOP DESIGN TOKENS (1440px container) ─────────────────────────────────────────────────────────────────── */
 :root {
   /* ── Layout & Grid ──*/
-  --max-width:            75%;                   /* 1110px,📏 Content container max width */
+  --max-width:            80%;                   /* 1110px,📏 Content container max width */
   --gap-heading-to-grid:  64px;                     /* ⬇ Space between heading/paragraph and grid of cards */
   --gap-grid-horizontal:  30px;                     /* ↔ Space between side-by-side cards */
   --gap-grid-vertical:    30px;                     /* ↕ Space between stacked cards */
