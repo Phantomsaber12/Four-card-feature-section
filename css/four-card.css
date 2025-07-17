@@ -1,7 +1,7 @@
 /* ─── DESKTOP DESIGN TOKENS (1440px container) ─────────────────────────────────────────────────────────────────── */
 :root {
   /* ── Layout & Grid ──*/
-  --max-width:            69.5%;                   /* 1110px,📏 Content container max width */
+  --max-width:            80%;                   /* 1110px,📏 Content container max width */
   --gap-heading-to-grid:  64px;                     /* ⬇ Space between heading/paragraph and grid of cards */
   --gap-grid-horizontal:  30px;                     /* ↔ Space between side-by-side cards */
   --gap-grid-vertical:    30px;                     /* ↕ Space between stacked cards */
@@ -29,7 +29,7 @@
 
   --fs-heading:           36px;                     /* 🔠 Page heading: "Reliable, efficient delivery" */
   
-  --fs-paragraph:         16px;                     /* 📄 Paragraph text under card titles */
+  --fs-paragraph:         15px;                     /* 📄 Paragraph text under card titles */
   --fs-card-heading:      20px;
 
   /* ── Card Styling ─── */
@@ -78,26 +78,26 @@ img, picture, video, canvas, svg {
 
 
 
-
 /* ─── Code ──────────────────────────────────────────────────────── */
 html , body{
-background-color: var(--clr-white);
-min-height: 100vh;
-min-height: 100dvh; /*browser use it , or it fallback to 100vh*/
+background-color: var(--clr-neutral-light);
+height: 100%;
+/*min-height: 100vh;*/
+/*min-height: 100dvh; browser use it , or it fallback to 100vh*/
 font-family: var(--ff-base);
 }
 
 
 .text-and-grid-wrapper {
   width: 100%;
-  min-height: 100dvh; /*fills whole height of the viewport <html> & <body>*/
+  height: 100%;
+  /*min-height: 100dvh; fills whole height of the viewport <html> & <body>*/
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: var(--gap-heading-to-grid);
 }
-
 
 .text-wrapper{
   width: var(--max-width);
@@ -129,7 +129,6 @@ font-family: var(--ff-base);
 
 
 
-
 .four-card-grid{
   width: var(--max-width);
   display: grid;
@@ -138,7 +137,6 @@ font-family: var(--ff-base);
   grid-column-gap: var(--gap-grid-horizontal);
   grid-row-gap: var(--gap-grid-vertical);
 }
-
 
 .first-item-card { 
   grid-area: 3 / 1 / 7 / 2;
@@ -157,8 +155,9 @@ font-family: var(--ff-base);
    border-top: 4px solid var(--clr-primary-blue);
   }
   .first-item-card  , .second-item-card , .third-item-card , .fourth-item-card{
-    padding: var(--card-padding) 0 calc(1rem + var(--card-padding)) var(--card-padding);
-    background-color: var(--clr-neutral-light);
+    /*padding: var(--card-padding) 0 calc(1rem + var(--card-padding)) var(--card-padding);*/
+    padding: var(--card-padding) var(--card-padding) calc(1rem + var(--card-padding)) var(--card-padding);
+    background-color: var(--clr-white);
     border-radius: var(--card-radius);
     box-shadow: 0px 15px 19px -2px hsl(212, 66%, 93%);
   }
@@ -181,7 +180,8 @@ font-family: var(--ff-base);
    line-height: 1.5;
   }
   .first-item-card .supervisor-icon, .second-item-card .team-builder-icon, .third-item-card .karma-icon, .fourth-item-card .calculator-icon{
-   margin: var(--gap-card-text-to-icon)  32px 0 auto;
+   /*margin: var(--gap-card-text-to-icon)  32px 0 auto;*/
+   margin: var(--gap-card-text-to-icon) 0 0 auto;
   }
 
 
@@ -211,11 +211,9 @@ font-family: var(--ff-base);
   --gap-card-text-to-icon: 32px;  /* Desktop: 40px */
 }
 
-
-  br { /*prevent <bt> effect*/
+  br { /*prevent <br> effect*/
   display: none;
 }
-
 
   .four-card-grid{
     grid-template-columns: 1fr;
@@ -223,12 +221,6 @@ font-family: var(--ff-base);
   }
   .first-item-card  , .second-item-card , .third-item-card , .fourth-item-card{
     grid-area: auto
-  }
-   .first-item-card  , .second-item-card , .third-item-card , .fourth-item-card{
-    padding: var(--card-padding) var(--card-padding) calc(1rem + var(--card-padding)) var(--card-padding);
-   }
-  .first-item-card .supervisor-icon, .second-item-card .team-builder-icon, .third-item-card .karma-icon, .fourth-item-card .calculator-icon{
-   margin: var(--gap-card-text-to-icon) 0 0 auto;
   }
 
   .first-item-card:active  , .second-item-card:active , .third-item-card:active , .fourth-item-card:active{
