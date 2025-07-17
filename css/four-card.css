@@ -1,7 +1,7 @@
 /* ─── DESKTOP DESIGN TOKENS (1440px container) ─────────────────────────────────────────────────────────────────── */
 :root {
   /* ── Layout & Grid ──*/
-  --max-width:            80%;                   /* 1110px,📏 Content container max width */
+  --max-width:            75%;                   /* 1110px,📏 Content container max width */
   --gap-heading-to-grid:  64px;                     /* ⬇ Space between heading/paragraph and grid of cards */
   --gap-grid-horizontal:  30px;                     /* ↔ Space between side-by-side cards */
   --gap-grid-vertical:    30px;                     /* ↕ Space between stacked cards */
@@ -29,7 +29,7 @@
 
   --fs-heading:           36px;                     /* 🔠 Page heading: "Reliable, efficient delivery" */
   
-  --fs-paragraph:         15px;                     /* 📄 Paragraph text under card titles */
+  --fs-paragraph:         14px;                     /* 📄 Paragraph text under card titles */
   --fs-card-heading:      20px;
 
   /* ── Card Styling ─── */
@@ -81,22 +81,26 @@ img, picture, video, canvas, svg {
 /* ─── Code ──────────────────────────────────────────────────────── */
 html , body{
 background-color: var(--clr-neutral-light);
-height: 100%;
-/*min-height: 100vh;*/
-/*min-height: 100dvh; browser use it , or it fallback to 100vh*/
+min-height: 100vh;
+min-height: 100dvh; /*browser use it , or it fallback to 100vh*/
 font-family: var(--ff-base);
 }
 
 
 .text-and-grid-wrapper {
   width: 100%;
-  height: 100%;
-  /*min-height: 100dvh; fills whole height of the viewport <html> & <body>*/
+  /*height: 100% is fixed height won't allow any height is increase and that is a problem if your page conent height is lager than
+    your <body> page height*/
+  min-height: 100dvh; /*fills whole height of the viewport <html> & <body> , and also to allow height increase for scrolling*/
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /*no need for justify-content: center; --> i just will use top and bottom padding , also to allow ,more scrolling
+    if my content height is > "min-height: 100dvh;" then "justify-content: center;" wont work*/
   align-items: center;
   gap: var(--gap-heading-to-grid);
+  padding-block: 110px 90px; /* top padding to look pixel perfect , bottom padding to allow more scrolling 
+                                because my viewport height "min-height: 100dvh;" has a limit that past it i can't scroll down more
+                                 so bottom padding leaves space from the bottom so i can scroll to it (more height downard)*/
 }
 
 .text-wrapper{
@@ -118,7 +122,7 @@ font-family: var(--ff-base);
   margin-top: var(--gap-heading-subheading);
 }
 .text-wrapper p{
-  font-size: var(--fs-paragraph);
+  font-size: calc(1px + var(--fs-paragraph));
   font-weight: var(--fw-regular);
   color: var(--clr-neutral-dark);
   margin-top: var(--gap-subheading-paragraph);
